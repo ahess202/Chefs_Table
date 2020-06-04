@@ -1,5 +1,5 @@
 #Capstone Project Overview
-#Dish Search
+#Chefs Table
 ##Elevator Pitch
 **********************************************
 The app will be designed for those that want to access a quick and easy database of recipes, sorted by cuisine nation-of-origin, ingredient, difficulty level, total time etc. Users will be able to register an account on the website, and have the ability to save their favorite recipes as well as create their own and post it to the site.
