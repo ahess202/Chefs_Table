@@ -16,13 +16,22 @@ public class User extends AbstractEntity {
     @NotNull
     private String pwHash;
 
+    private String email;
+
+    private String profilePicture;
+
+    private String bio;
+
     private boolean isVerifiedChef = false;
 
     public User() {}
 
-    public User(String username, String password) {
+    public User(String username, String password, String email, String profilePicture, String bio) {
         this.username = username;
         this.pwHash = encoder.encode(password);
+        this.email = email;
+        this.profilePicture = profilePicture;
+        this.bio = bio;
     }
 
     public String getUsername() {

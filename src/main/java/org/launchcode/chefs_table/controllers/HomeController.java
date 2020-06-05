@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class HomeController {
 
-    @RequestMapping("")
+    @GetMapping
     public String index(Model model) {
-        model.addAttribute("title", "Dish Search"); //Maybe call it Chef's Table? TBD
+        model.addAttribute("title", "Chef's Table");
         return "index";
     }
 }
