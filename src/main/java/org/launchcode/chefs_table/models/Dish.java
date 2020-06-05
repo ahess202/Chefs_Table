@@ -4,6 +4,7 @@ package org.launchcode.chefs_table.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ public class Dish extends AbstractEntity {
 
     @NotNull
     @ElementCollection
-    private List<String> ingredientList = new ArrayList<String>();
+    @ManyToMany
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     @NotNull
     private String cuisineType;
@@ -38,12 +40,12 @@ public class Dish extends AbstractEntity {
 
     public Dish() {}
 
-    public Dish(String name, @Size(min = 10, max = 30) String shortDescription, String author, String totalTime, List<String> ingredientList, String cuisineType, int numServings) {
+    public Dish(String name, @Size(min = 10, max = 30) String shortDescription, String author, String totalTime, List<Ingredient> ingredients, String cuisineType, int numServings) {
         this.name = name;
         this.shortDescription = shortDescription;
         this.author = author;
         this.totalTime = totalTime;
-        this.ingredientList = ingredientList;
+        this.ingredients = ingredients;
         this.cuisineType = cuisineType;
         this.numServings = numServings;
     }
@@ -80,12 +82,12 @@ public class Dish extends AbstractEntity {
         this.totalTime = totalTime;
     }
 
-    public List<String> getIngredientList() {
-        return ingredientList;
+    public List<Ingredient> getIngredientList() {
+        return ingredients;
     }
 
-    public void setIngredientList(List<String> ingredientList) {
-        this.ingredientList = ingredientList;
+    public void setIngredientList(List<Ingredient> ingredientList) {
+        this.ingredients = ingredientList;
     }
 
     public String getCuisineType() {
