@@ -5,5 +5,16 @@
 <div th:replace="fragments :: header"></div>
 <h1 id="title" th:text="${title}"></h1>
 
+<p th:unless="${ingredients} and ${ingredients.size()}">No Ingredients!</p>
+
+<div class="container body-content">
+    <ul>
+        <li th:each="ingredient : ${ingredients}">
+            <a th:href="@{'/ingredients/view/' + ${ingredient.id}}" th:text="${ingredient.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/ingredients/add'}">Add Ingredient</a>
+
+</div>
 </body>
 </html>
