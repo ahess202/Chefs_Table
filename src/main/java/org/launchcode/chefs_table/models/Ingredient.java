@@ -19,8 +19,9 @@ public class Ingredient extends AbstractEntity {
 
     public Ingredient() {}
 
-    public Ingredient(String name) {
+    public Ingredient(String name, List<Dish> dishes) {
         this.name = name;
+        this.dishes = dishes;
     }
 
     public String getName() {
@@ -29,6 +30,14 @@ public class Ingredient extends AbstractEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 
     @Override

@@ -66,13 +66,13 @@ public class DishController {
         return "redirect:";
     }
 
-    @GetMapping("view/{dishId}")
+    @GetMapping("/view/{dishId}")
     public String displayViewDish(Model model, @PathVariable int dishId) {
         Optional optDish = dishRepository.findById(dishId);
         if (optDish.isPresent()) {
             Dish dish = (Dish) optDish.get();
             model.addAttribute("dish", dish);
-            return "view";
+            return "dishes/view";
         } else {
             return "redirect:";
         }
