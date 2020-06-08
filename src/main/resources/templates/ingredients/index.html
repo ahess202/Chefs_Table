@@ -4,15 +4,17 @@
 <body>
 <div th:replace="fragments :: header"></div>
 <h1 id="title" th:text="${title}"></h1>
+
+<p th:unless="${ingredients} and ${ingredients.size()}">No Ingredients!</p>
+
 <div class="container body-content">
     <ul>
-        <li th:each="dish : ${dishes}">
-            <a th:href="@{'/dishes/view/' + ${dish.id}}" th:text="${dish.name}"></a>
+        <li th:each="ingredient : ${ingredients}">
+            <a th:href="@{'/ingredients/view/' + ${ingredient.id}}" th:text="${ingredient.name}"></a>
         </li>
     </ul>
-    <a th:href="@{'/dishes/add'}">Add Dish</a>
+    <a th:href="@{'/ingredients/add'}">Add Ingredient</a>
 
 </div>
-
 </body>
 </html>
