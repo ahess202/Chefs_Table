@@ -8,6 +8,7 @@
 <nav th:replace="fragments :: header"></nav>
 
 <div class="job-listing">
+    <img th:src="@{'/images/dishPics/' + ${dish.dishImage}}" alt="Picture of Dish" id="dishPic">
     <p th:text="${'Name: ' + dish.name}"></p>
     <p th:text="${'Cuisine: ' + dish.cuisineType}"></p>
     <p th:text="${'Author: ' + dish.author.firstName + ' ' + dish.author.lastName}"></p>

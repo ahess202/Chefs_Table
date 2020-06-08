@@ -32,7 +32,7 @@
     </div>
     <div class="form-group">
         <label>Profile Picture URL/Path
-            <input class="form-control" th:field="${registerFormDTO.profilePicture}" />
+            <input type="file" class="form-control" th:field="${registerFormDTO.profilePicture}" />
         </label>
         <p class="error" th:errors="${registerFormDTO.profilePicture}"></p>
     </div>

@@ -63,7 +63,7 @@
 
     <div class="form-group">
         <label th:for="dishImage">Path to dish Image</label>
-        <input class="form-control" th:field="${dish.dishImage}" />
+        <input type="file" class="form-control" th:field="${dish.dishImage}" />
         <span th:errors="${dish.dishImage}" class="error"></span>
     </div>
 
