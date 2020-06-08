@@ -14,15 +14,13 @@ public class Ingredient extends AbstractEntity {
     @NotNull
     private String name;
 
-    @NotNull
     @ManyToMany(mappedBy = "ingredients")
     private List<Dish> dishes = new ArrayList<>();
 
     public Ingredient() {}
 
-    public Ingredient(String name, List<Dish> dishes) {
+    public Ingredient(String name) {
         this.name = name;
-        this.dishes = dishes;
     }
 
     public String getName() {

@@ -1,11 +1,13 @@
 package org.launchcode.chefs_table.models.dto;
 
+import org.launchcode.chefs_table.models.Dish;
 import org.launchcode.chefs_table.models.dto.LoginFormDTO;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 public class RegisterFormDTO extends LoginFormDTO {
 
@@ -27,6 +29,8 @@ public class RegisterFormDTO extends LoginFormDTO {
     private String firstName;
 
     private String lastName;
+
+    private List<Dish> dishes;
 
     public String getVerifyPassword() {
         return verifyPassword;
@@ -74,5 +78,13 @@ public class RegisterFormDTO extends LoginFormDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 }

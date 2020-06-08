@@ -4,6 +4,9 @@ import com.sun.istack.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User extends AbstractEntity {
@@ -30,11 +33,14 @@ public class User extends AbstractEntity {
 
     private String bio;
 
+    @OneToMany
+    private List<Dish> dishes = new ArrayList<>();
+
     private boolean isVerifiedChef = false;
 
     public User() {}
 
-    public User(String username, String password, String email, String profilePicture, String bio, String firstName, String lastName) {
+    public User(String username, String password, String email, String profilePicture, String bio, String firstName, String lastName, List<Dish> dishes) {
         this.username = username;
         this.pwHash = encoder.encode(password);
         this.email = email;
@@ -42,6 +48,7 @@ public class User extends AbstractEntity {
         this.bio = bio;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.dishes = dishes;
     }
 
     public String getUsername() {
@@ -98,6 +105,14 @@ public class User extends AbstractEntity {
 
     public void markAsVerified() {
         this.isVerifiedChef = true;
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 
     public boolean isMatchingPassword(String password) {
