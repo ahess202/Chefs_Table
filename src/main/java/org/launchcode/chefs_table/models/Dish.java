@@ -24,11 +24,18 @@ public class Dish extends AbstractEntity {
     private String shortDescription;
 
     @NotNull
+    @Size(min = 1, max = 500, message = "500 charachter limit!")
+    private String directions;
+
+    @NotNull
     @ManyToOne
     private User author;
 
     @NotNull
     private String totalTime;
+
+    @NotNull
+    private String timeType;
 
     @ManyToMany
     private List<Ingredient> ingredients = new ArrayList<>();
@@ -44,7 +51,7 @@ public class Dish extends AbstractEntity {
 
     public Dish() {}
 
-    public Dish(String name, @Size(min = 10, max = 30) String shortDescription, User author, String totalTime, List<Ingredient> ingredients, String cuisineType, int numServings, String dishImage) {
+    public Dish(String name, @Size(min = 10, max = 30) String shortDescription, User author, String totalTime, List<Ingredient> ingredients, String cuisineType, int numServings, String dishImage, String directions, String timeType) {
         this.name = name;
         this.shortDescription = shortDescription;
         this.author = author;
@@ -53,6 +60,8 @@ public class Dish extends AbstractEntity {
         this.cuisineType = cuisineType;
         this.numServings = numServings;
         this.dishImage = dishImage;
+        this.directions = directions;
+        this.timeType = timeType;
     }
 
     public String getName() {
@@ -69,6 +78,14 @@ public class Dish extends AbstractEntity {
 
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
+    }
+
+    public String getDirections() {
+        return directions;
+    }
+
+    public void setDirections(String directions) {
+        this.directions = directions;
     }
 
     public User getAuthor() {
@@ -125,5 +142,13 @@ public class Dish extends AbstractEntity {
 
     public void setDishImage(String dishImage) {
         this.dishImage = dishImage;
+    }
+
+    public String getTimeType() {
+        return timeType;
+    }
+
+    public void setTimeType(String timeType) {
+        this.timeType = timeType;
     }
 }

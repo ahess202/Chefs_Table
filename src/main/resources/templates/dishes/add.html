@@ -34,7 +34,7 @@
 
     <div class="form-group">
         <label th:for="shortDescription">Short Description</label>
-        <input class="form-control" th:field="${dish.shortDescription}" />
+        <input type="textarea" class="form-control" th:field="${dish.shortDescription}" />
         <span th:errors="${dish.shortDescription}" class="error"></span>
     </div>
 
@@ -48,7 +48,12 @@
         <label th:for="totalTime">Total Time</label>
         <input class="form-control" th:field="${dish.totalTime}" />
         <span th:errors="${dish.totalTime}" class="error"></span>
+        <select th:field="${dish.timeType}" name="timeType" id="timeType">
+            <option value="hr">hr</option>
+            <option value="min">mins</option>
+        </select>
     </div>
+
 
     <div class="form-group">
         <label th:for="numServings">Number of Servings</label>
@@ -60,6 +65,12 @@
         <label th:for="dishImage">Path to dish Image</label>
         <input class="form-control" th:field="${dish.dishImage}" />
         <span th:errors="${dish.dishImage}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="directions">Directions</label>
+        <input type="textarea" class="form-control" th:field="${dish.directions}" />
+        <span th:errors="${dish.directions}" class="error"></span>
     </div>
 
     <input type="submit" value="Add Dish" />

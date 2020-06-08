@@ -7,3 +7,7 @@
 #registerButton {
     text-align: right;
 }
+
+#timeType {
+    display: inline-block;
+}

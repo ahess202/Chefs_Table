@@ -8,8 +8,13 @@
 <nav th:replace="fragments :: header"></nav>
 
 <div class="job-listing">
-    <p th:text="${'ID: ' + dish.id}"></p>
     <p th:text="${'Name: ' + dish.name}"></p>
+    <p th:text="${'Cuisine: ' + dish.cuisineType}"></p>
+    <p th:text="${'Author: ' + dish.author.firstName + ' ' + dish.author.lastName}"></p>
+    <p th:text="${'Number of Servings: ' + dish.numServings}"></p>
+    <p th:text="${'Total Time: ' + dish.totalTime + dish.timeType}"></p>
+
+
     <p> Ingredients:
     <ul>
         <li th:each="ingredient : ${dish.ingredients}">
