@@ -23,8 +23,16 @@
                 <li><a th:href="@{/ingredients}">Ingredients</a></li>
                 <li><a href="https://www.nytimes.com/section/food">NYT Food</a></li>
             </ul>
-                <li class="navbar-right"><a th:href="@{/register}" >Register</a></li>
-                <li class="navbar-right"><a th:href="@{/login}" >Login</a></li>
+            <th:block th:unless="${isLoggedIn}">
+                <li class="navbar-right btn btn-success"><a th:href="@{/register}" >Register</a></li>
+                <li class="navbar-right btn btn-success"><a th:href="@{/login}" >Login</a></li>
+            </th:block>
+            <th:block th:if="${isLoggedIn}">
+                <li class="navbar-right btn btn-success"><a th:href="@{/logout}" >Logout</a></li>
+                <li class="navbar-right">Hello <a th:href="@{/users/profile}"
+                                                               th:text="${currentUser}"></a>!
+                </li>
+            </th:block>
         </div>
     </div>
 </div>
