@@ -3,8 +3,7 @@ package org.launchcode.chefs_table.models;
 import com.sun.istack.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,10 +36,8 @@ public class User extends AbstractEntity {
     @NotNull
     private String bio;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Dish> dishes = new ArrayList<>();
-
-    private boolean isVerifiedChef = false;
 
     public User() {}
 
@@ -72,9 +69,6 @@ public class User extends AbstractEntity {
         this.username = username;
     }
 
-    public boolean getVerifiedStatus() {
-        return isVerifiedChef;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -114,10 +108,6 @@ public class User extends AbstractEntity {
 
     public void setBio(String bio) {
         this.bio = bio;
-    }
-
-    public void markAsVerified() {
-        this.isVerifiedChef = true;
     }
 
     public List<Dish> getDishes() {

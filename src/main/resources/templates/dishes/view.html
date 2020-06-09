@@ -24,7 +24,8 @@
         <div id="dishDetails">
             <p th:text="${'Name: ' + dish.name}"></p>
             <p th:text="${'Cuisine: ' + dish.cuisineType}"></p>
-            <p>Author: <a th:href="@{/users/profile}" th:text="${dish.author.firstName + ' ' + dish.author.lastName}"></a></p>
+            <p>Author:
+                <a th:href="@{/users/profile}" th:text="${dish.user.firstName + ' ' + dish.user.lastName}"></a></p>
             <p th:text="${'Number of Servings: ' + dish.numServings}"></p>
             <p th:text="${'Total Time: ' + dish.totalTime + dish.timeType}"></p>
         </div>

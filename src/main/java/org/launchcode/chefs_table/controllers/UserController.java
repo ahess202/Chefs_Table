@@ -64,6 +64,7 @@ public class UserController {
 
             model.addAttribute("currentUser", user.getFirstName());
             model.addAttribute("isLoggedIn", (user != null));
+
             User user1 = (User) optUser.get();
             model.addAttribute("user", user1);
             return "users/view";

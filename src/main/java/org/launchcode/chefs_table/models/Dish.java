@@ -24,12 +24,13 @@ public class Dish extends AbstractEntity {
     private String shortDescription;
 
     @NotNull
-    @Size(min = 1, max = 500, message = "500 charachter limit!")
+    @Size(min = 1, max = 500, message = "500 character limit!")
     private String directions;
 
     @NotNull
-    @ManyToOne
-    private User author;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @NotNull
     private String totalTime;
@@ -51,10 +52,10 @@ public class Dish extends AbstractEntity {
 
     public Dish() {}
 
-    public Dish(String name, @Size(min = 10, max = 30) String shortDescription, User author, String totalTime, List<Ingredient> ingredients, String cuisineType, int numServings, String dishImage, String directions, String timeType) {
+    public Dish(String name, @Size(min = 10, max = 30) String shortDescription, User user, String totalTime, List<Ingredient> ingredients, String cuisineType, int numServings, String dishImage, String directions, String timeType) {
         this.name = name;
         this.shortDescription = shortDescription;
-        this.author = author;
+        this.user = user;
         this.totalTime = totalTime;
         this.ingredients = ingredients;
         this.cuisineType = cuisineType;
@@ -88,12 +89,12 @@ public class Dish extends AbstractEntity {
         this.directions = directions;
     }
 
-    public User getAuthor() {
-        return author;
+    public User getUser() {
+        return user;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setUser(User author) {
+        this.user = author;
     }
 
     public String getTotalTime() {

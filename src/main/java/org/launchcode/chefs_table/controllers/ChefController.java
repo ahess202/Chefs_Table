@@ -1,6 +1,7 @@
 package org.launchcode.chefs_table.controllers;
 
 import org.launchcode.chefs_table.models.User;
+import org.launchcode.chefs_table.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +18,16 @@ public class ChefController {
     @Autowired
     AuthenticationController authenticationController;
 
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping
     public String index(HttpServletRequest request, Model model) {
 
         HttpSession session = request.getSession();
         User user = authenticationController.getUserFromSession(session);
 
+        model.addAttribute("users", userRepository.findAll());
         model.addAttribute("currentUser", user.getFirstName());
         model.addAttribute("isLoggedIn", (user != null));
         model.addAttribute("title", "Meet The Chefs");

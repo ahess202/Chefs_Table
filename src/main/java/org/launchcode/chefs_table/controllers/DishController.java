@@ -77,7 +77,7 @@ public class DishController {
         }
         List<Ingredient> ingredientObjs = (List<Ingredient>) ingredientRepository.findAllById(ingredients);
 
-        newDish.setAuthor(userRepository.findById(userId).get());
+        newDish.setUser(userRepository.findById(userId).get());
         newDish.setIngredientList(ingredientObjs);
 
         dishRepository.save(newDish);

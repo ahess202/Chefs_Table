@@ -1,9 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <link th:href="@{/css/chefListing.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+</head>
 <body>
 <div th:replace="fragments :: header"></div>
 <h1 id="title" th:text="${title}"></h1>
 
+<div class="child-page-listing">
+
+    <h2>The Chefs</h2>
+
+    <div class="grid-container">
+
+    <article class="chef-listing" th:each="user : ${users}" th:if="${user.role} == 'chef'">
+        <a class="chef-title" th:href="@{'/users/view/' + ${user.id}}" th:text="${user.firstName + ' ' + user.lastName}"></a>
+        <div class="chef-image">
+            <a th:href="@{'/users/view/' + ${user.id}}">
+                <img id="chefPic" th:src="@{'/images/profilePics/' + ${user.profilePicture}}" alt="Chef Picture">
+            </a>
+        </div>
+    </article>
+
+    </div>
+
+    <!-- more articles -->
+
+</div>
+<!--                    <figure class="chefListing"  id="chefListing" >-->
+<!--                        <a th:href="@{'/users/view/' + ${user.id}}">-->
+<!--                            <img class="chefPic" th:src="@{'/images/profilePics/' + ${user.profilePicture}}"/>-->
+<!--                        </a>-->
+<!--                        <figcaption class="caption" th:text="${user.firstName + ' ' + user.lastName}"></figcaption>-->
+<!--                    </figure>-->
+
 </body>
+
 </html>
+
+    <!-- end grid container -->
+
+</div>
