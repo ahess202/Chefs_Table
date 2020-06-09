@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container  body-content">
+<nav th:replace="fragments :: header"></nav>
+
+<div>
+    <p th:text="${'Name: ' + user.username}"></p>
+    <p> User Dishes
+    <ul>
+        <li th:each="dish : ${user.dishes}">
+            <a th:href="@{'/dishes/view/' + ${dish.id}}" th:text="${dish.name}"></a>
+        </li>
+    </ul>
+    </p>
+</div>

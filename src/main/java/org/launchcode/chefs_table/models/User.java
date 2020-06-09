@@ -34,6 +34,7 @@ public class User extends AbstractEntity {
     @NotNull
     private String profilePicture;
 
+    @NotNull
     private String bio;
 
     @OneToMany

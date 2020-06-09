@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
+<div th:replace="fragments :: header"></div>
+<h1 id="title" th:text="${title}"></h1>
 
+
+<div class="container body-content">
+    <ul>
+        <li th:each="user : ${users}">
+            <a th:href="@{'/users/view/' + ${user.id}}" th:text="${user.username}"></a>
+        </li>
+    </ul>
+
+</div>
 </body>
 </html>

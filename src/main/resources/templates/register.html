@@ -12,6 +12,7 @@
             <select class="form-control" th:field="${registerFormDTO.role}">
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
+                <option value="chef">Chef</option>
             </select>
         </label>
         <p class="error" th:errors="${registerFormDTO.role}"></p>
@@ -54,7 +55,7 @@
 
     <div class="form-group">
         <label>Bio
-            <input class="form-control" th:field="${registerFormDTO.bio}" />
+            <textarea class="form-control" th:field="${registerFormDTO.bio}" />
         </label>
         <p class="error" th:errors="${registerFormDTO.bio}"></p>
     </div>
