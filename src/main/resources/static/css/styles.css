@@ -19,10 +19,41 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    padding: 10px;
 }
 
 #navBarGreeting {
     color: white;
     padding: 10px;
     list-style: none;
+}
+
+#ingredientList {
+    border: solid black 3px;
+    float: left;
+    width: 30%;
+    height: 300px;
+    padding: 10px;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+#dishDetails {
+    border: solid black 3px;
+    float: left;
+    width: 30%;
+    height: 300px;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+#dishDirections {
+    border: solid black 3px;
+    float: left;
+    width: 30%;
+    height: 300px;
+    padding: 10px;
+    margin-left: 10px;
 }

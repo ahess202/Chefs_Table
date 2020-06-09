@@ -69,7 +69,7 @@
 
     <div class="form-group">
         <label th:for="directions">Directions</label>
-        <input type="textarea" class="form-control" th:field="${dish.directions}" />
+        <textarea type="text" class="form-control" th:field="${dish.directions}" />
         <span th:errors="${dish.directions}" class="error"></span>
     </div>
 
