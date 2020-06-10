@@ -25,7 +25,7 @@ public class HomeController {
 
         model.addAttribute("currentUser", user.getFirstName());
         model.addAttribute("isLoggedIn", (user != null));
-        model.addAttribute("title", "Our Chefs To Follow");
+        model.addAttribute("title", "Welcome to the Chef's Table!");
         return "index";
     }
 }

@@ -22,7 +22,8 @@
                     <li class="nav-item"><a class="nav-link" th:href="@{/dishes}">Dishes</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/ingredients}">Ingredients</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/users}">Users</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.nytimes.com/section/food">NYT Food</a></li>
+                    <li class="nav-item"><a class="nav-link" target="_blank" href="https://www.nytimes.com/section/food">NYT
+                        Food</a></li>
                 </ul>
                 <th:block th:unless="${isLoggedIn}">
                     <a th:href="@{/register}"class="mr-sm-2"><button class="btn btn-primary">Register</button></a>
