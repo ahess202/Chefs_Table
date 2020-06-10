@@ -21,14 +21,15 @@
                 <li><a th:href="@{/chefs}">Chefs</a></li>
                 <li><a th:href="@{/dishes}">Dishes</a></li>
                 <li><a th:href="@{/ingredients}">Ingredients</a></li>
+                <li><a th:href="@{/users}">Users</a></li>
                 <li><a href="https://www.nytimes.com/section/food">NYT Food</a></li>
             </ul>
             <th:block th:unless="${isLoggedIn}">
-                <li class="navbar-right btn btn-success"><a th:href="@{/register}" >Register</a></li>
-                <li class="navbar-right btn btn-success"><a th:href="@{/login}" >Login</a></li>
+                <a th:href="@{/register}"class="navbar-right "><button class="btn btn-primary">Register</button></a>
+                <a th:href="@{/login}" class="navbar-right "><button class="btn btn-success">Login</button></a>
             </th:block>
             <th:block th:if="${isLoggedIn}">
-                <li class="navbar-right btn btn-success"><a th:href="@{/logout}" >Logout</a></li>
+                <a th:href="@{/logout}" class="navbar-right"><button class="btn btn-danger">Logout</button></a>
                 <li class="navbar-right">Hello <a th:href="@{/users/profile}"
                                                                th:text="${currentUser}"></a>!
                 </li>

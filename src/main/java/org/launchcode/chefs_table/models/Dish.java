@@ -28,7 +28,7 @@ public class Dish extends AbstractEntity {
     private String directions;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 

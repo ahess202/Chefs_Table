@@ -102,4 +102,23 @@ public class DishController {
         }
     }
 
+    @GetMapping("delete")
+    public String displayDeleteDishForm(Model model) {
+        model.addAttribute("title", "Delete Dishes");
+        model.addAttribute("dishes", dishRepository.findAll());
+        return "dishes/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteDishForm(@RequestParam(required = false) int[] dishIds) {
+
+        if (dishIds != null) {
+            for (int id : dishIds) {
+                dishRepository.deleteById(id);
+            }
+        }
+
+        return "redirect:";
+    }
+
 }
