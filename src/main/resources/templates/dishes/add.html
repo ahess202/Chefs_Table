@@ -4,7 +4,6 @@
 <body class="container body-content">
 
 <nav th:replace="fragments :: header"></nav>
-<h1 id="title" th:text="${title}"></h1>
 
 <form method="post" style="max-width:600px;">
     <div class="form-group">
@@ -76,5 +75,7 @@
     <input type="submit" value="Add Dish" />
 </form>
 
+
+<div th:replace="fragments :: bootStrapScript"></div>
 </body>
 </html>

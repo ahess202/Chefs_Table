@@ -4,7 +4,6 @@
 <body class="container">
 
 <header th:replace="fragments :: header"></header>
-<h1 id="title" th:text="${title}"></h1>
 <div class="container body-content">
 
     <form method="post">
@@ -22,5 +21,7 @@
     </form>
 
 </div>
+
+<div th:replace="fragments :: bootStrapScript"></div>
 </body>
 </html>

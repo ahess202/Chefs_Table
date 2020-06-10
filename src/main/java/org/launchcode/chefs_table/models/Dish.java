@@ -24,6 +24,7 @@ public class Dish extends AbstractEntity {
     private String shortDescription;
 
     @NotNull
+    @Column(length=1000)
     @Size(min = 1, max = 500, message = "500 character limit!")
     private String directions;
 

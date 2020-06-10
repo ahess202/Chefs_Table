@@ -3,40 +3,51 @@
 
 <head th:fragment="head">
 
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link th:href="@{/css/styles.css}" rel="stylesheet" />
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
 </head>
 <body>
+<div th:fragment="header">
+    <div  class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a th:href="@{/}" class="navbar-brand">Chef's Table</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/chefs}">Chefs</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/dishes}">Dishes</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/ingredients}">Ingredients</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/users}">Users</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.nytimes.com/section/food">NYT Food</a></li>
+                </ul>
+                <th:block th:unless="${isLoggedIn}">
+                    <a th:href="@{/register}"class="mr-sm-2"><button class="btn btn-primary">Register</button></a>
+                    <a th:href="@{/login}" class="mr-sm-2"><button class="btn btn-success">Login</button></a>
+                </th:block>
+                <th:block th:if="${isLoggedIn}">
+                    <nav class="mr-sm-2 nav-item" style="color: white;">Hello <a th:href="@{/users/profile}"
+                                                                   th:text="${currentUser}"></a>!
+                    </nav>
+                    <a th:href="@{/logout}" class="mr-sm-2"><button class="btn btn-danger">Logout</button></a>
+                </th:block>
+            </div>
+        </div>
 
-<div th:fragment="header" class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a th:href="@{/}" class="navbar-brand">Chef's Table</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a th:href="@{/}">Home</a></li>
-                <li><a th:href="@{/chefs}">Chefs</a></li>
-                <li><a th:href="@{/dishes}">Dishes</a></li>
-                <li><a th:href="@{/ingredients}">Ingredients</a></li>
-                <li><a th:href="@{/users}">Users</a></li>
-                <li><a href="https://www.nytimes.com/section/food">NYT Food</a></li>
-            </ul>
-            <th:block th:unless="${isLoggedIn}">
-                <a th:href="@{/register}"class="navbar-right "><button class="btn btn-primary">Register</button></a>
-                <a th:href="@{/login}" class="navbar-right "><button class="btn btn-success">Login</button></a>
-            </th:block>
-            <th:block th:if="${isLoggedIn}">
-                <a th:href="@{/logout}" class="navbar-right"><button class="btn btn-danger">Logout</button></a>
-                <li class="navbar-right">Hello <a th:href="@{/users/profile}"
-                                                               th:text="${currentUser}"></a>!
-                </li>
-            </th:block>
-        </div>
+
+    </div>
+    <div class="title-container">
+        <h1 class="title" th:text="${title}"></h1>
     </div>
 </div>
 
+<div th:fragment="bootStrapScript">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</div>
 </body>
 </html>

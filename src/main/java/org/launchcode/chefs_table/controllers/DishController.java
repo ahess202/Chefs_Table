@@ -95,6 +95,7 @@ public class DishController {
             model.addAttribute("isLoggedIn", (user != null));
 
             Dish dish = (Dish) optDish.get();
+            model.addAttribute("title", dish.getName());
             model.addAttribute("dish", dish);
             return "dishes/view";
         } else {

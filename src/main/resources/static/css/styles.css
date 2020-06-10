@@ -1,11 +1,27 @@
-#title {
+.title {
     padding: 30px;
     text-decoration: underline;
     text-align: center;
+    display: inline-block;
     margin-top: 40px;
     border: solid black 2px;
     background-color: lightgreen;
-    width: 300px;
+    width: 600px;
+    height 100px;
+}
+
+.title-container {
+    text-align: center;
+}
+
+.login-form {
+    text-align: center;
+}
+
+body {
+  padding: 20px;
+  font-family: sans-serif;
+  background: #f2f2f2;
 }
 
 #registerButton {
@@ -32,7 +48,7 @@
     list-style: none;
 }
 
-#ingredientList {
+.ingredientList {
     border: solid black 3px;
     float: left;
     width: 30%;
@@ -40,7 +56,10 @@
     padding: 10px;
     margin-left: 30px;
     margin-right: 10px;
+    overflow-y:scroll;
+    position:relative;
 }
+
 
 #dishDetails {
     border: solid black 3px;
@@ -53,13 +72,15 @@
     text-align: center;
 }
 
-#dishDirections {
+.dishDirections {
     border: solid black 3px;
     float: left;
     width: 30%;
     height: 300px;
     padding: 10px;
     margin-left: 10px;
+    overflow-y:scroll;
+    position:relative;
 }
 
 .grid-container {

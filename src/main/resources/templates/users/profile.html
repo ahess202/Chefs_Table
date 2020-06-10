@@ -4,7 +4,8 @@
 <body>
 
 <div th:replace="fragments :: header"></div>
-<h1 id="title" th:text="${title}"></h1>
 <p th:text="${user.username}"></p>
+
+<div th:replace="fragments :: bootStrapScript"></div>
 </body>
 </html>

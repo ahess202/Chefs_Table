@@ -25,7 +25,7 @@ public class RegisterFormDTO extends LoginFormDTO {
 
     private String profilePicture;
 
-    @Size(max = 250, message = "Max 250 characters!")
+    @Size(max = 1000, message = "Max 1000 characters!")
     private String bio;
 
     @NotBlank(message = "Must enter a first name!")

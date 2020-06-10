@@ -71,6 +71,7 @@ public class IngredientController {
             model.addAttribute("isLoggedIn", (user != null));
             Ingredient ingredient = (Ingredient) optIngredient.get();
             model.addAttribute("ingredient", ingredient);
+            model.addAttribute("title", ingredient.getName());
             return "ingredients/view";
         } else {
             return "redirect:";

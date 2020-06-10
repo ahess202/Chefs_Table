@@ -34,6 +34,7 @@ public class User extends AbstractEntity {
     private String profilePicture;
 
     @NotNull
+    @Column(length=1000)
     private String bio;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")

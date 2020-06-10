@@ -67,6 +67,7 @@ public class UserController {
 
             User user1 = (User) optUser.get();
             model.addAttribute("user", user1);
+            model.addAttribute("title", user1.getUsername());
             return "users/view";
         } else {
             return "redirect:";
