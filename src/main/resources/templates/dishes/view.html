@@ -7,7 +7,8 @@
     <nav th:replace="fragments :: header"></nav>
 
     <div>
-        <img th:src="@{'/images/dishPics/' + ${dish.dishImage}}" alt="Picture of Dish" id="dishPic">
+        <img th:src="@{'/images/dishPics/' + ${dish.dishImage}}" alt="Picture of Dish" id="dishPic"
+             style="height: 400px; width 300px;">
 
         <div class="ingredientList overflow-auto">
             <p> Ingredients:

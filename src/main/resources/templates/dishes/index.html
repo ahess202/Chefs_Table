@@ -16,7 +16,9 @@
         </thead>
         <tbody>
         <tr th:each="dish : ${dishes}">
-            <td><img src="@{'/images/dishPics/' + ${dish.dishImage}}" alt="picture of dish"></td>
+            <td><img th:src="@{'/images/dishPics/' + ${dish.dishImage}}" alt="picture of dish" class="img-thumbnail"
+                     style="width: 200px; height: 200px;"
+            ></td>
             <td><a th:href="@{'/dishes/view/' + ${dish.id}}" th:text="${dish.name}"></a></td>
             <td><a th:href="@{/users/profile}" th:text="${dish.user.firstName + ' ' + dish.user.lastName}"></a></td>
             <td th:text="${dish.cuisineType}"></td>

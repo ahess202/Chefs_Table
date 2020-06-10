@@ -5,15 +5,60 @@
 <body class="container  body-content">
 <nav th:replace="fragments :: header"></nav>
 
-<div>
-    <p th:text="${'Name: ' + user.username}"></p>
-    <p> User Dishes
-    <ul>
-        <li th:each="dish : ${user.dishes}">
-            <a th:href="@{'/dishes/view/' + ${dish.id}}" th:text="${dish.name}"></a>
-        </li>
-    </ul>
-    </p>
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img th:src="@{'/images/profilePics/' + ${user.profilePicture}}" alt="profile picture"
+                         style="width: 250px; height: 275px;"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5 th:text="${user.firstName + ' ' + user.lastName}"></h5>
+                    <h6 th:text="${user.role}"></h6>
+                    <h5 th:text="${user.firstName + 's Dishes'}"></h5>
+                    <div class="chef-dishes">
+                        <ul>
+                            <li th:each="dish : ${user.dishes}"><a th:href="@{'/dishes/view/' + ${dish.id}}" th:text="${dish.name}"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p th:text="${user.username}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p th:text="${user.firstName + ' ' + user.lastName}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p th:text="${user.email}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p th:text="${user.role}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 
