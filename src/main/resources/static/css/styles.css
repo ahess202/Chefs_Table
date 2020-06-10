@@ -2,6 +2,10 @@
     padding: 30px;
     text-decoration: underline;
     text-align: center;
+    margin-top: 40px;
+    border: solid black 2px;
+    background-color: lightgreen;
+    width: 300px;
 }
 
 #registerButton {
