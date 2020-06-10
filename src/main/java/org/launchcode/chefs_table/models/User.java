@@ -3,8 +3,7 @@ package org.launchcode.chefs_table.models;
 import com.sun.istack.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +11,9 @@ import java.util.List;
 public class User extends AbstractEntity {
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+
+    private String role;
 
     @NotNull
     private String username;
@@ -31,16 +33,17 @@ public class User extends AbstractEntity {
     @NotNull
     private String profilePicture;
 
+    @NotNull
+    @Column(length=1000)
     private String bio;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Dish> dishes = new ArrayList<>();
-
-    private boolean isVerifiedChef = false;
 
     public User() {}
 
-    public User(String username, String password, String email, String profilePicture, String bio, String firstName, String lastName, List<Dish> dishes) {
+    public User(String username, String password, String email, String profilePicture, String bio, String firstName, String lastName, List<Dish> dishes, String role) {
+        this.role = role;
         this.username = username;
         this.pwHash = encoder.encode(password);
         this.email = email;
@@ -51,6 +54,14 @@ public class User extends AbstractEntity {
         this.dishes = dishes;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -59,9 +70,6 @@ public class User extends AbstractEntity {
         this.username = username;
     }
 
-    public boolean getVerifiedStatus() {
-        return isVerifiedChef;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -101,10 +109,6 @@ public class User extends AbstractEntity {
 
     public void setBio(String bio) {
         this.bio = bio;
-    }
-
-    public void markAsVerified() {
-        this.isVerifiedChef = true;
     }
 
     public List<Dish> getDishes() {

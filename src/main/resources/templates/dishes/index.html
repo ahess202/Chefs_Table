@@ -3,16 +3,35 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <div th:replace="fragments :: header"></div>
-<h1 id="title" th:text="${title}"></h1>
 <div class="container body-content">
-    <ul>
-        <li th:each="dish : ${dishes}">
-            <a th:href="@{'/dishes/view/' + ${dish.id}}" th:text="${dish.name}"></a>
-        </li>
-    </ul>
-    <a th:href="@{'/dishes/add'}">Add Dish</a>
-
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Thumbnail</th>
+            <th scope="col">Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Cuisine</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dish : ${dishes}">
+            <td><img th:src="@{'/images/dishPics/' + ${dish.dishImage}}" alt="picture of dish" class="img-thumbnail"
+                     style="width: 200px; height: 200px;"
+            ></td>
+            <td><a th:href="@{'/dishes/view/' + ${dish.id}}" th:text="${dish.name}"></a></td>
+            <td><a th:href="@{/users/profile}" th:text="${dish.user.firstName + ' ' + dish.user.lastName}"></a></td>
+            <td th:text="${dish.cuisineType}"></td>
+            <td th:text="${dish.shortDescription}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="text-align: center">
+        <a th:href="@{'/dishes/add'}" style="color: black"><button class="btn btn-primary" >Add Dish</button></a>
+        <a th:href="@{'/dishes/delete'}" style="color: black"><button class="btn btn-danger" >Delete Dish</button></a>
+    </div>
 </div>
 
+<div th:replace="fragments :: bootStrapScript"></div>
 </body>
 </html>

@@ -4,7 +4,6 @@
 <body class="container body-content">
 
 <nav th:replace="fragments :: header"></nav>
-<h1 id="title" th:text="${title}"></h1>
 
 <form method="post" style="max-width:600px;">
     <div class="form-group">
@@ -63,18 +62,20 @@
 
     <div class="form-group">
         <label th:for="dishImage">Path to dish Image</label>
-        <input class="form-control" th:field="${dish.dishImage}" />
+        <input type="file" class="form-control" th:field="${dish.dishImage}" />
         <span th:errors="${dish.dishImage}" class="error"></span>
     </div>
 
     <div class="form-group">
         <label th:for="directions">Directions</label>
-        <input type="textarea" class="form-control" th:field="${dish.directions}" />
+        <textarea type="text" class="form-control" th:field="${dish.directions}" />
         <span th:errors="${dish.directions}" class="error"></span>
     </div>
 
     <input type="submit" value="Add Dish" />
 </form>
 
+
+<div th:replace="fragments :: bootStrapScript"></div>
 </body>
 </html>

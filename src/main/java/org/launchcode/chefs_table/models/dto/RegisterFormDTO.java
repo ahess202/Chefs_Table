@@ -12,6 +12,8 @@ import java.util.List;
 public class RegisterFormDTO extends LoginFormDTO {
 
 
+    private String role;
+
     @NotNull
     @NotBlank(message = "Must verify password!")
     private String verifyPassword;
@@ -23,6 +25,7 @@ public class RegisterFormDTO extends LoginFormDTO {
 
     private String profilePicture;
 
+    @Size(max = 1000, message = "Max 1000 characters!")
     private String bio;
 
     @NotBlank(message = "Must enter a first name!")
@@ -31,6 +34,14 @@ public class RegisterFormDTO extends LoginFormDTO {
     private String lastName;
 
     private List<Dish> dishes;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getVerifyPassword() {
         return verifyPassword;

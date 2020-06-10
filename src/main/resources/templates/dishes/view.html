@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns:pth="http://www.w3.org/1999/html">
 <head th:replace="fragments :: head"></head>
 
 <body class="container  body-content">
-<h1 id="title" th:text="${dish.name}">Default Title</h1>
 
-<nav th:replace="fragments :: header"></nav>
+    <nav th:replace="fragments :: header"></nav>
 
-<div class="job-listing">
-    <p th:text="${'Name: ' + dish.name}"></p>
-    <p th:text="${'Cuisine: ' + dish.cuisineType}"></p>
-    <p th:text="${'Author: ' + dish.author.firstName + ' ' + dish.author.lastName}"></p>
-    <p th:text="${'Number of Servings: ' + dish.numServings}"></p>
-    <p th:text="${'Total Time: ' + dish.totalTime + dish.timeType}"></p>
+    <div>
+        <img th:src="@{'/images/dishPics/' + ${dish.dishImage}}" alt="Picture of Dish" id="dishPic"
+             style="height: 400px; width 300px;">
+
+        <div class="ingredientList overflow-auto">
+            <p> Ingredients:
+            <ul>
+                <li th:each="ingredient : ${dish.ingredients}">
+                    <a th:href="@{'/ingredients/view/' + ${ingredient.id}}" th:text="${ingredient.name}"></a>
+                </li>
+            </ul>
+            </p>
+        </div>
+
+        <div id="dishDetails">
+            <p th:text="${'Name: ' + dish.name}"></p>
+            <p th:text="${'Cuisine: ' + dish.cuisineType}"></p>
+            <p>Author:
+                <a th:href="@{/users/profile}" th:text="${dish.user.firstName + ' ' + dish.user.lastName}"></a></p>
+            <p th:text="${'Number of Servings: ' + dish.numServings}"></p>
+            <p th:text="${'Total Time: ' + dish.totalTime + dish.timeType}"></p>
+        </div>
+        <div class="dishDirections overflow-auto">
+            <h2>Directions</h2>
+            <p th:text="${dish.directions}"></p>
+        </div>
 
 
-    <p> Ingredients:
-    <ul>
-        <li th:each="ingredient : ${dish.ingredients}">
-            <a th:href="@{'/ingredients/view/' + ${ingredient.id}}" th:text="${ingredient.name}"></a>
-        </li>
-    </ul>
-    </p>
-</div>
+    </div>
 
+    <div th:replace="fragments :: bootStrapScript"></div>
 
-</body>
+    </body>
 </html>

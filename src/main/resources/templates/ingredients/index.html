@@ -3,7 +3,6 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <div th:replace="fragments :: header"></div>
-<h1 id="title" th:text="${title}"></h1>
 
 <p th:unless="${ingredients} and ${ingredients.size()}">No Ingredients!</p>
 
@@ -16,5 +15,7 @@
     <a th:href="@{'/ingredients/add'}">Add Ingredient</a>
 
 </div>
+
+<div th:replace="fragments :: bootStrapScript"></div>
 </body>
 </html>

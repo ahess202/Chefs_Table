@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+<p th:text="${user.username}"></p>
+
+<div th:replace="fragments :: bootStrapScript"></div>
+</body>
+</html>

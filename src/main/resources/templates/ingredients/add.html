@@ -3,7 +3,6 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <div th:replace="fragments :: header"></div>
-<h1 id="title" th:text="${title}"></h1>
 
 <form method="post" style="max-width:600px;">
     <div class="form-group">
@@ -15,5 +14,7 @@
     <input type="submit" value="Add Ingredient" />
 </form>
 
+
+<div th:replace="fragments :: bootStrapScript"></div>
 </body>
 </html>

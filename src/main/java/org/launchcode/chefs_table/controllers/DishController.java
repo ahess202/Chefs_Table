@@ -2,6 +2,7 @@ package org.launchcode.chefs_table.controllers;
 
 import org.launchcode.chefs_table.models.Dish;
 import org.launchcode.chefs_table.models.Ingredient;
+import org.launchcode.chefs_table.models.User;
 import org.launchcode.chefs_table.models.data.DishRepository;
 import org.launchcode.chefs_table.models.data.IngredientRepository;
 import org.launchcode.chefs_table.models.data.UserRepository;
@@ -11,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +21,9 @@ import java.util.Optional;
 @Controller
 @RequestMapping("dishes")
 public class DishController {
+
+    @Autowired
+    AuthenticationController authenticationController;
 
     @Autowired
     private DishRepository dishRepository;
@@ -29,7 +35,13 @@ public class DishController {
     private UserRepository userRepository;
 
     @RequestMapping("")
-    public String index(Model model) {
+    public String index(HttpServletRequest request, Model model) {
+
+        HttpSession session = request.getSession();
+        User user = authenticationController.getUserFromSession(session);
+
+        model.addAttribute("currentUser", user.getFirstName());
+        model.addAttribute("isLoggedIn", (user != null));
 
         model.addAttribute("title", "Dishes");
         model.addAttribute("dishes", dishRepository.findAll());
@@ -38,7 +50,13 @@ public class DishController {
     }
 
     @GetMapping("add")
-    public String displayAddDishForm(Model model) {
+    public String displayAddDishForm(HttpServletRequest request, Model model) {
+
+        HttpSession session = request.getSession();
+        User user = authenticationController.getUserFromSession(session);
+
+        model.addAttribute("currentUser", user.getFirstName());
+        model.addAttribute("isLoggedIn", (user != null));
         model.addAttribute("title", "Add Dish");
         model.addAttribute(new Dish());
         model.addAttribute("ingredients", ingredientRepository.findAll());
@@ -59,7 +77,7 @@ public class DishController {
         }
         List<Ingredient> ingredientObjs = (List<Ingredient>) ingredientRepository.findAllById(ingredients);
 
-        newDish.setAuthor(userRepository.findById(userId).get());
+        newDish.setUser(userRepository.findById(userId).get());
         newDish.setIngredientList(ingredientObjs);
 
         dishRepository.save(newDish);
@@ -67,15 +85,41 @@ public class DishController {
     }
 
     @GetMapping("/view/{dishId}")
-    public String displayViewDish(Model model, @PathVariable int dishId) {
+    public String displayViewDish(HttpServletRequest request, Model model, @PathVariable int dishId) {
         Optional optDish = dishRepository.findById(dishId);
         if (optDish.isPresent()) {
+            HttpSession session = request.getSession();
+            User user = authenticationController.getUserFromSession(session);
+
+            model.addAttribute("currentUser", user.getFirstName());
+            model.addAttribute("isLoggedIn", (user != null));
+
             Dish dish = (Dish) optDish.get();
+            model.addAttribute("title", dish.getName());
             model.addAttribute("dish", dish);
             return "dishes/view";
         } else {
             return "redirect:";
         }
+    }
+
+    @GetMapping("delete")
+    public String displayDeleteDishForm(Model model) {
+        model.addAttribute("title", "Delete Dishes");
+        model.addAttribute("dishes", dishRepository.findAll());
+        return "dishes/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteDishForm(@RequestParam(required = false) int[] dishIds) {
+
+        if (dishIds != null) {
+            for (int id : dishIds) {
+                dishRepository.deleteById(id);
+            }
+        }
+
+        return "redirect:";
     }
 
 }

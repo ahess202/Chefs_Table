@@ -3,8 +3,6 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="container  body-content">
-<h1 id="title" th:text="${ingredient.name}">Default Title</h1>
-
 <nav th:replace="fragments :: header"></nav>
 
 <div class="job-listing">
@@ -18,3 +16,7 @@
             </ul>
         </p>
 </div>
+
+<div th:replace="fragments :: bootStrapScript"></div>
+</body>
+</html>

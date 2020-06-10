@@ -1,7 +1,32 @@
-#title {
+.title {
     padding: 30px;
     text-decoration: underline;
     text-align: center;
+    display: inline-block;
+    margin-top: 40px;
+    border: solid black 2px;
+    background-color: lightgreen;
+    width: 600px;
+    height 70px;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.title-container {
+    text-align: center;
+}
+
+.login-form {
+    text-align: center;
+}
+
+body {
+  padding: 20px;
+  font-family: sans-serif;
+  background: #f2f2f2;
 }
 
 #registerButton {
@@ -10,4 +35,137 @@
 
 #timeType {
     display: inline-block;
+}
+
+#dishPic {
+    width: 150px;
+    border-radius: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+#navBarGreeting {
+    color: white;
+    padding: 10px;
+    list-style: none;
+}
+
+
+#dishDetails {
+    border: solid black 3px;
+    float: left;
+    width: 30%;
+    height: 300px;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.ingredientList {
+    border: solid black 3px;
+    float: left;
+    width: 30%;
+    height: 300px;
+    padding: 10px;
+    margin-left: 30px;
+    margin-right: 10px;
+    overflow-y:scroll;
+    position:relative;
+}
+
+.dishDirections {
+    border: solid black 3px;
+    float: left;
+    width: 30%;
+    height: 300px;
+    padding: 10px;
+    margin-left: 10px;
+    overflow: scroll;
+    overflow-wrap: break-word;
+    position:relative;
+}
+
+.chef-dishes {
+    width: 300px;
+    height: 160px;
+    overflow: scroll;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1em;
+}
+
+#chefPic {
+  width: 100%;
+  height: auto;
+}
+
+.chef-listing {
+  position: relative;
+}
+
+.chef-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(90,0,10,0.4);
+}
+
+.chef-image {
+  line-height: 0;
+}
+
+.location-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(90,0,10,0.4);
+
+  /* typographic styles */
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+
+  /* position the text centrally*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* hide the title by default */
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+.location-listing:hover .location-title {
+  opacity: 1;
+}
+
+.location-image img {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+}
+
+.location-listing:hover .location-image img {
+  filter: blur(2px);
+}
+
+.location-image img {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+  transform: scale(1.1);
+}
+
+.location-listing {
+  position: relative;
+  overflow: hidden;
 }
