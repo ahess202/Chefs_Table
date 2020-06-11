@@ -5,7 +5,7 @@ body {
 }
 img {
   width: 100%; /* need to overwrite inline dimensions */
-  height: auto;
+  height: 100%;
 }
 h2 {
   margin-bottom: .5em;

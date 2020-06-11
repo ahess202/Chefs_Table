@@ -11,13 +11,41 @@
              style="height: 400px; width 300px;">
 
         <div class="ingredientList overflow-auto">
-            <p> Ingredients:
-            <ul>
-                <li th:each="ingredient : ${dish.ingredients}">
-                    <a th:href="@{'/ingredients/view/' + ${ingredient.id}}" th:text="${ingredient.name}"></a>
-                </li>
-            </ul>
-            </p>
+            <table class="table" style="display:inline-block; width: 100px;">
+                <thead>
+                <tr>
+                    <th scope="col">Ingredient</th>
+<!--                    <th scope="col">Measurement</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ingredient : ${dish.ingredients}">
+                    <td th:text="${ingredient.name}">Mark</td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="table" style="display:inline-block; width: 100px;">
+                <thead>
+                <tr>
+                    <th scope="col">Measurement</th>
+                    <!--                    <th scope="col">Measurement</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="measurement : ${dish.ingredientQuantities}">
+                    <td th:if="${measurement != ''}" th:text="${measurement}">Mark</td>
+                </tr>
+                </tbody>
+            </table>
+<!--            <ul>-->
+<!--                <li th:each="ingredient : ${dish.ingredients}">-->
+<!--                    <a th:href="@{'/ingredients/view/' + ${ingredient.id}}" th:text="${ingredient.name}"></a>-->
+<!--                </li>-->
+<!--&lt;!&ndash;                <li th:each="x : ${dish.ingredientQuantities}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p th:text="${x}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--            </ul>-->
+
         </div>
 
         <div id="dishDetails">

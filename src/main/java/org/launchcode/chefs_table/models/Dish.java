@@ -43,6 +43,10 @@ public class Dish extends AbstractEntity {
     private List<Ingredient> ingredients = new ArrayList<>();
 
     @NotNull
+    @ElementCollection
+    private List<String> ingredientQuantities = new ArrayList<>();
+
+    @NotNull
     private String cuisineType;
 
     @NotNull
@@ -53,7 +57,7 @@ public class Dish extends AbstractEntity {
 
     public Dish() {}
 
-    public Dish(String name, @Size(min = 10, max = 30) String shortDescription, User user, String totalTime, List<Ingredient> ingredients, String cuisineType, int numServings, String dishImage, String directions, String timeType) {
+    public Dish(String name, @Size(min = 10, max = 30) String shortDescription, User user, String totalTime, List<Ingredient> ingredients, String cuisineType, int numServings, String dishImage, String directions, String timeType, List<String> ingredientQuantities) {
         this.name = name;
         this.shortDescription = shortDescription;
         this.user = user;
@@ -64,6 +68,7 @@ public class Dish extends AbstractEntity {
         this.dishImage = dishImage;
         this.directions = directions;
         this.timeType = timeType;
+        this.ingredientQuantities = ingredientQuantities;
     }
 
     public String getName() {
@@ -112,6 +117,14 @@ public class Dish extends AbstractEntity {
 
     public void setIngredientList(List<Ingredient> ingredientList) {
         this.ingredients = ingredientList;
+    }
+
+    public List<String> getIngredientQuantities() {
+        return ingredientQuantities;
+    }
+
+    public void setIngredientQuantities(List<String> ingredientQuantities) {
+        this.ingredientQuantities = ingredientQuantities;
     }
 
     public String getCuisineType() {

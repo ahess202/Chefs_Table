@@ -1,5 +1,6 @@
 package org.launchcode.chefs_table.controllers;
 
+import org.launchcode.chefs_table.models.IngredientQuantities;
 import org.launchcode.chefs_table.models.Dish;
 import org.launchcode.chefs_table.models.Ingredient;
 import org.launchcode.chefs_table.models.User;
@@ -15,13 +16,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("dishes")
 public class DishController {
-
+    
     @Autowired
     AuthenticationController authenticationController;
 
@@ -65,7 +67,7 @@ public class DishController {
     }
     @PostMapping("add")
     public String processAddDishForm(@ModelAttribute @Valid Dish newDish,
-                                    Errors errors, Model model, @RequestParam int userId, @RequestParam List<Integer> ingredients) {
+                                    Errors errors, Model model, @RequestParam int userId, @RequestParam List<Integer> ingredients, @RequestParam List<String> measurements) {
 
         model.addAttribute("title", "Add Dish");
 
@@ -76,7 +78,13 @@ public class DishController {
             return "dishes/add";
         }
         List<Ingredient> ingredientObjs = (List<Ingredient>) ingredientRepository.findAllById(ingredients);
+        List<String> ingredientQuantities = new ArrayList<>();
+        for (String measurement: measurements
+             ) {
+            ingredientQuantities.add(measurement);
+        }
 
+        newDish.setIngredientQuantities(ingredientQuantities);
         newDish.setUser(userRepository.findById(userId).get());
         newDish.setIngredientList(ingredientObjs);
 
