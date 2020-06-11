@@ -2,80 +2,111 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container body-content">
+    <style>
+        input, textarea{
+            display:block;
+             margin:0 auto;
+          }
+          .center {
+              margin: auto;
+              width: 50%;
+              border: 3px solid green;
+              padding: 10px;
+           }
+    </style>
+    <nav th:replace="fragments :: header"></nav>
+    <div style="text-align: center;">
+        <form method="post" style="width: 100%; text-align:center">
+            <div class="form-group" style="text-align:center">
+                <label th:for="name">Name</label>
+                <input class="form-control" th:field="${dish.name}" style="width: 50%;"/>
+                <span th:errors="${dish.name}" class="error"></span>
+            </div>
 
-<nav th:replace="fragments :: header"></nav>
+            <div class="form-group" style="text-align:center">
+                <label th:for="users">Author</label>
+                <select name="userId">
+                    <option th:each="user : ${users}"
+                            th:text="${user.username}"
+                            th:value="${user.id}"></option>
+                </select>
+            </div>
+            <p>Ingredients</p>
+            <div class="form-group ingredientList overflow-auto center"
+                 style="width: 60%; text-align:left; display: block;"
+                 id="sectionForm">
+                <th:block th:each="ingredient : ${ingredients}">
+                    <label th:text="${ingredient.name}"></label><input style="display: inline-block" type="checkbox"
+                                                                       name="ingredients"
+                                                              th:value="${ingredient.id}"/> <input style="display: inline-block" type="text"
+                                                                                                 name="measurement"
+                                                                                                  placeholder="cup/oz/tbsp etc..."/>
+                    <br>
+                </th:block>
+                <a th:href="@{'/ingredients/add'}">Add Ingredients</a>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="form-group" style="text-align:center">
+                <label th:for="shortDescription">Short Description</label>
+                <input class="form-control" th:field="${dish.shortDescription}" style="width:50%"/>
+                <span th:errors="${dish.shortDescription}" class="error"></span>
+            </div>
 
-<form method="post" style="max-width:600px;">
-    <div class="form-group">
-        <label th:for="name">Name</label>
-        <input class="form-control" th:field="${dish.name}" />
-        <span th:errors="${dish.name}" class="error"></span>
+            <div class="form-group" style="text-align:center">
+                <label th:for="cuisineType">Cuisine Type</label>
+                <input class="form-control" th:field="${dish.cuisineType}" style="width:50%"/>
+                <span th:errors="${dish.cuisineType}" class="error"></span>
+            </div>
+
+            <div class="form-group" style="text-align:center">
+                <label th:for="totalTime">Total Time</label>
+                <input class="form-control" th:field="${dish.totalTime}" style="width:50%"/>
+                <span th:errors="${dish.totalTime}" class="error"></span>
+                <select th:field="${dish.timeType}" name="timeType" id="timeType">
+                    <option value="hr">hr</option>
+                    <option value="min">mins</option>
+                </select>
+            </div>
+
+
+            <div class="form-group" style="text-align:center">
+                <label th:for="numServings">Number of Servings</label>
+                <input type="number" class="form-control" th:field="${dish.numServings}" style="width:50%"/>
+                <span th:errors="${dish.numServings}" class="error"></span>
+            </div>
+
+            <div class="form-group" style="text-align:center">
+                <label th:for="dishImage">Path to dish Image</label>
+                <input type="file" class="form-control" th:field="${dish.dishImage}" style="width:50%" />
+                <span th:errors="${dish.dishImage}" class="error"></span>
+            </div>
+
+            <div class="form-group" style="text-align:center">
+                <label th:for="directions">Directions</label>
+                <textarea type="text" class="form-control" th:field="${dish.directions}"
+                          style="width: 80%; height: 300px; float: center;"/>
+                <span th:errors="${dish.directions}" class="error"></span>
+            </div>
+
+            <input type="submit" value="Add Dish" id="checkBtn"/>
+        </form>
     </div>
 
-    <div class="form-group">
-        <label th:for="users">Users</label>
-        <select name="userId">
-            <option th:each="user : ${users}"
-                    th:text="${user.username}"
-                    th:value="${user.id}"></option>
-        </select>
-        <a th:href="@{'/register'}">Register New User</a>
-    </div>
 
-    <div class="form-group">
-        <label th:for="ingredients">Ingredients</label>
-        <th:block th:each="ingredient : ${ingredients}">
-            <input type="checkbox" name="ingredients" th:value="${ingredient.id}" checked>
-            <label th:text="${ingredient.name}"></label>
-        </th:block>
-        <a th:href="@{'/ingredients/add'}">Add Ingredients</a>
-    </div>
-
-    <div class="form-group">
-        <label th:for="shortDescription">Short Description</label>
-        <input type="textarea" class="form-control" th:field="${dish.shortDescription}" />
-        <span th:errors="${dish.shortDescription}" class="error"></span>
-    </div>
-
-    <div class="form-group">
-        <label th:for="cuisineType">Cuisine Type</label>
-        <input class="form-control" th:field="${dish.cuisineType}" />
-        <span th:errors="${dish.cuisineType}" class="error"></span>
-    </div>
-
-    <div class="form-group">
-        <label th:for="totalTime">Total Time</label>
-        <input class="form-control" th:field="${dish.totalTime}" />
-        <span th:errors="${dish.totalTime}" class="error"></span>
-        <select th:field="${dish.timeType}" name="timeType" id="timeType">
-            <option value="hr">hr</option>
-            <option value="min">mins</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label th:for="numServings">Number of Servings</label>
-        <input class="form-control" th:field="${dish.numServings}" />
-        <span th:errors="${dish.numServings}" class="error"></span>
-    </div>
-
-    <div class="form-group">
-        <label th:for="dishImage">Path to dish Image</label>
-        <input type="file" class="form-control" th:field="${dish.dishImage}" />
-        <span th:errors="${dish.dishImage}" class="error"></span>
-    </div>
-
-    <div class="form-group">
-        <label th:for="directions">Directions</label>
-        <textarea type="text" class="form-control" th:field="${dish.directions}" />
-        <span th:errors="${dish.directions}" class="error"></span>
-    </div>
-
-    <input type="submit" value="Add Dish" />
-</form>
-
-
-<div th:replace="fragments :: bootStrapScript"></div>
+    <div th:replace="fragments :: bootStrapScript"></div>
+    <script th:src="@{/script/dishScript.js}"></script>
 </body>
 </html>

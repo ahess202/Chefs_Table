@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
     <head th:replace="fragments :: head"></head>
     <body>
-
         <div class="jumbotron text-center" style="margin-bottom:0">
             <h1 th:text="${title}"></h1>
             <p>Your go-to resource for all of your favorite chef's recipes!</p>
@@ -35,47 +34,76 @@
                         </th:block>
                     </div>
                 </div>
-
-
             </div>
         </nav>
 
-        <div class="container" style="margin-top:30px">
+        <div class="container" style="margin-top:30px; text-align:center;">
             <div class="row">
-<!--                <div class="col-sm-4">-->
-<!--                    <h2>About Me</h2>-->
-<!--                    <h5>Photo of me:</h5>-->
-<!--                    <div class="fakeimg">Fake Image</div>-->
-<!--                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>-->
-<!--                    <h3>Some Links</h3>-->
-<!--                    <p>Lorem ipsum dolor sit ame.</p>-->
-<!--                    <ul class="nav nav-pills flex-column">-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link active" href="#">Active</a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link" href="#">Link</a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link" href="#">Link</a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link disabled" href="#">Disabled</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                    <hr class="d-sm-none">-->
-<!--                </div>-->
-                <div class="col-sm-8">
-                    <h2>Our Favorite Chefs</h2>
+                <div class="col align-self-center" >
+                    <h2 >Our Favorite Chefs</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <figure>
+                        <a th:href="@{/users/view/46}">
+                            <img th:src="@{/images/profilePics/gordon-ramsay.jpg}" alt="ramsay"
+                                 style="width: 100px; height: 100px;"
+                                 class="img-thumbnail">
+                        </a>
+                        <figcaption>Gordon Ramsay</figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-3">
+                    <figure>
+                        <a th:href="@{/users/view/48}">
+                            <img th:src="@{/images/profilePics/kenji.jpg}" alt="kenji"
+                                 style="width: 100px; height: 100px;"
+                                 class="img-thumbnail">
+                        </a>
+                        <figcaption>J. Kenji López-Alt</figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-3">
+                    <figure>
+                        <a th:href="@{/users/view/47}">
+                            <img th:src="@{/images/profilePics/alton_brown.jpg}" alt="chefPic"
+                                 style="width: 100px; height: 100px;"
+                                 class="img-thumbnail">
+                        </a>
+                        <figcaption>Alton Brown</figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-3">
+                    <figure>
+                        <a th:href="@{/users/view/49}">
+                            <img th:src="@{/images/profilePics/babish.jpg}" alt="chefPic"
+                                 style="width: 100px; height: 100px;"
+                                 class="img-thumbnail">
+                        </a>
+                        <figcaption>Andrew Rea</figcaption>
+                    </figure>
                 </div>
             </div>
         </div>
 
-        <div class="jumbotron text-center" style="margin-bottom:0">
-            <p>Footer</p>
+        <div class="container" style="margin-top:30px">
+            <div class="row" style="float: left;">
+                <div class="col align-self-center">
+                    <h2>Chef's Picks</h2>
+                </div>
+            </div>
+            <div class="row" style="float: right;">
+                <div class="col-sm-8">
+                    <h2>NYT Food</h2>
+                </div>
+            </div>
+
+            <div class="jumbotron text-center" style="margin-bottom:0">
+                <p>Video of the Day</p>
+            </div>
+
         </div>
-
         <div th:replace="fragments :: bootStrapScript"></div>
-
     </body>
 </html>
