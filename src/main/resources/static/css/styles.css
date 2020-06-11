@@ -38,7 +38,8 @@ body {
 }
 
 #dishPic {
-    width: 150px;
+    width: 200px;
+    height: 200px;
     border: solid black 1px;
     border-radius: 8px;
     display: block;
