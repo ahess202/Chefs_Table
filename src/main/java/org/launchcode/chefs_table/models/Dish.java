@@ -20,12 +20,12 @@ public class Dish extends AbstractEntity {
     private String name;
 
     @NotNull
-    @Size(min = 10, max = 30)
+    @Size(min = 1, max = 250)
     private String shortDescription;
 
     @NotNull
-    @Column(length=1000)
-    @Size(min = 1, max = 500, message = "500 character limit!")
+    @Column(length=5000)
+    @Size(min = 1)
     private String directions;
 
     @NotNull
@@ -42,6 +42,7 @@ public class Dish extends AbstractEntity {
     @ManyToMany
     private List<Ingredient> ingredients = new ArrayList<>();
 
+    //TODO Make hashmap
     @NotNull
     @ElementCollection
     private List<String> ingredientQuantities = new ArrayList<>();

@@ -10,8 +10,8 @@
         <img th:src="@{'/images/dishPics/' + ${dish.dishImage}}" alt="Picture of Dish" id="dishPic"
              style="height: 400px; width 300px;">
 
-        <div class="ingredientList overflow-auto">
-            <table class="table" style="display:inline-block; width: 100px;">
+        <div class="ingredientList overflow-auto" style="display:inline-block;">
+            <table class="table" style="display:inline-block; width: 140px;">
                 <thead>
                 <tr>
                     <th scope="col">Ingredient</th>
@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="ingredient : ${dish.ingredients}">
-                    <td th:text="${ingredient.name}">Mark</td>
+                    <td><a th:href="@{'/ingredients/view/' + ${ingredient.id}}" th:text="${ingredient.name}"></a></td>
                 </tr>
                 </tbody>
             </table>
@@ -52,7 +52,8 @@
             <p th:text="${'Name: ' + dish.name}"></p>
             <p th:text="${'Cuisine: ' + dish.cuisineType}"></p>
             <p>Author:
-                <a th:href="@{/users/profile}" th:text="${dish.user.firstName + ' ' + dish.user.lastName}"></a></p>
+                <a th:href="@{'/users/view/' + ${dish.user.id}}"
+                   th:text="${dish.user.firstName + ' ' + dish.user.lastName}"></a></p>
             <p th:text="${'Number of Servings: ' + dish.numServings}"></p>
             <p th:text="${'Total Time: ' + dish.totalTime + dish.timeType}"></p>
         </div>
