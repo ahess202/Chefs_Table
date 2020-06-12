@@ -3,6 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <div th:replace="fragments :: header"></div>
+
 <div class="container body-content">
     <table class="table table-hover">
         <thead class="thead-dark">
@@ -20,7 +21,8 @@
                      style="width: 250px; height: 250px;"
             ></td>
             <td><a th:href="@{'/dishes/view/' + ${dish.id}}" th:text="${dish.name}"></a></td>
-            <td><a th:href="@{/users/profile}" th:text="${dish.user.firstName + ' ' + dish.user.lastName}"></a></td>
+            <td><a th:href="@{'/users/view/' + ${dish.user.id}}"
+                   th:text="${dish.user.firstName + ' ' + dish.user.lastName}"></a></td>
             <td th:text="${dish.cuisineType}"></td>
             <td th:text="${dish.shortDescription}"></td>
         </tr>

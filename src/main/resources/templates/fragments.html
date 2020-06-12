@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link th:href="@{/css/styles.css}" rel="stylesheet" />
-    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+
 
 </head>
 <body>
@@ -30,7 +30,8 @@
                     <a th:href="@{/login}" class="mr-sm-2"><button class="btn btn-success">Login</button></a>
                 </th:block>
                 <th:block th:if="${isLoggedIn}">
-                    <nav class="mr-sm-2 nav-item" style="color: white;">Hello <a th:href="@{/users/profile}"
+                    <nav class="mr-sm-2 nav-item" style="color: white;">Hello <a
+                            th:href="@{'/users/view/' + ${currentUserObj.id}}"
                                                                    th:text="${currentUser}"></a>!
                     </nav>
                     <a th:href="@{/logout}" class="mr-sm-2"><button class="btn btn-danger">Logout</button></a>

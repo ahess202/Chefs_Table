@@ -44,7 +44,7 @@ public class DishController {
 
         model.addAttribute("currentUser", user.getFirstName());
         model.addAttribute("isLoggedIn", (user != null));
-
+        model.addAttribute("currentUserObj", user);
         model.addAttribute("title", "Dishes");
         model.addAttribute("dishes", dishRepository.findAll());
 
@@ -56,7 +56,7 @@ public class DishController {
 
         HttpSession session = request.getSession();
         User user = authenticationController.getUserFromSession(session);
-
+        model.addAttribute("currentUserObj", user);
         model.addAttribute("currentUser", user.getFirstName());
         model.addAttribute("isLoggedIn", (user != null));
         model.addAttribute("title", "Add Dish");
@@ -103,6 +103,7 @@ public class DishController {
             model.addAttribute("isLoggedIn", (user != null));
 
             Dish dish = (Dish) optDish.get();
+            model.addAttribute("currentUserObj", user);
             model.addAttribute("title", dish.getName());
             model.addAttribute("dish", dish);
             return "dishes/view";
@@ -112,7 +113,13 @@ public class DishController {
     }
 
     @GetMapping("delete")
-    public String displayDeleteDishForm(Model model) {
+    public String displayDeleteDishForm(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession();
+        User user = authenticationController.getUserFromSession(session);
+
+        model.addAttribute("currentUser", user.getFirstName());
+        model.addAttribute("isLoggedIn", (user != null));
+        model.addAttribute("currentUserObj", user);
         model.addAttribute("title", "Delete Dishes");
         model.addAttribute("dishes", dishRepository.findAll());
         return "dishes/delete";

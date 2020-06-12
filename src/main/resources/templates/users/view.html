@@ -10,7 +10,7 @@
             <div class="col-md-4">
                 <div class="profile-img">
                     <img th:src="@{'/images/profilePics/' + ${user.profilePicture}}" alt="profile picture"
-                         style="width: 250px; height: 275px;"/>
+                         style="width: 250px; height: 275px; border: solid black 2px; border-radius: 10px;"/>
                 </div>
             </div>
             <div class="col-md-6">
@@ -24,9 +24,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
             </div>
         </div>
         <div class="row">

@@ -8,10 +8,11 @@
         <script type="text/javascript" th:src="@{/script/nyt.js}"></script>
 
     </head>
-    <body>
+    <body id="body1">
         <div class="jumbotron text-center" style="margin-bottom:0">
             <h1 th:text="${title}"></h1>
-            <p>Your go-to resource for all of your favorite chef's recipes!</p>
+            <h3>Your go-to resource for all of your favorite chef's recipes!</h3>
+            <h4>And also your own!</h4>
         </div>
         <nav>
             <div  class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -34,7 +35,8 @@
                             <a th:href="@{/login}" class="mr-sm-2"><button class="btn btn-success">Login</button></a>
                         </th:block>
                         <th:block th:if="${isLoggedIn}">
-                            <nav class="mr-sm-2 nav-item" style="color: white;">Hello <a th:href="@{/users/profile}"
+                            <nav class="mr-sm-2 nav-item" style="color: white;">Hello <a
+                                    th:href="@{'/users/view/' + ${currentUserObj.id}}"
                                                                                          th:text="${currentUser}"></a>!
                             </nav>
                             <a th:href="@{/logout}" class="mr-sm-2"><button class="btn btn-danger">Logout</button></a>
@@ -47,7 +49,7 @@
         <div class="container" style="margin-top:30px; text-align:center;">
             <div class="row">
                 <div class="col align-self-center" >
-                    <h2 >Our Favorite Chefs</h2>
+                    <h2 >Top Chefs This Week</h2>
                 </div>
             </div>
             <div class="row">
@@ -93,85 +95,95 @@
                 </div>
             </div>
         </div>
+
         <hr>
 <!--chefs picks-->
-        <div class="container" style="margin-top:30px; text-align:center;">
-            <div class="row">
-                <div class="col align-self-center" >
-                    <h2 >Chef's Picks</h2>
+
+        <div class="container"
+             style="background-color: lightgrey; margin-top:30px; text-align:center; display: inline-block; margin-right: 0; margin-left: 0; border: solid black 2px; border-radius: 10px;">
+            <div style="display: inline-block;">
+                <div style="width: 40%; float: right; background-color: white;">
+                    <h2 style="text-align: center;">NYT Food</h2>
+                    <div class="ingredientList"
+                         id="root">
+                        <div class="banner-section " id="img-container">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col align-self-center" >
+                        <h2 style="text-align: center;">Chef's Picks</h2>
+                    </div>
+                </div>
+                <div class="row" style="width:60%;">
+                    <div class="col-sm-4">
+                        <figure>
+                            <a th:href="@{/dishes/view/113}">
+                                <img th:src="@{/images/dishPics/ramsay-wellington2.jpg}" alt="ramsay-wellington"
+                                     style="width: 100px; height: 100px;"
+                                     class="img-thumbnail">
+                            </a>
+                            <figcaption>Beef Wellington</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-sm-4">
+                        <figure>
+                            <a th:href="@{/dishes/view/152}">
+                                <img th:src="@{/images/dishPics/salmon-chowder.jpg}" alt="chowder"
+                                     style="width: 100px; height: 100px;"
+                                     class="img-thumbnail">
+                            </a>
+                            <figcaption>Salmon Chowder</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-sm-4">
+                        <figure>
+                            <a th:href="@{/dishes/view/122}">
+                                <img th:src="@{/images/dishPics/Chicken-Marsala.jpg}" alt="marsala"
+                                     style="width: 100px; height: 100px;"
+                                     class="img-thumbnail">
+                            </a>
+                            <figcaption>Chicken Marsala</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-sm-4">
+                        <figure>
+                            <a th:href="@{/dishes/view/127}">
+                                <img th:src="@{/images/dishPics/aglio.jpg}" alt="ramsay-wellington"
+                                     style="width: 100px; height: 100px;"
+                                     class="img-thumbnail">
+                            </a>
+                            <figcaption>Pasta Aglio e Olio</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-sm-4">
+                        <figure>
+                            <a th:href="@{/dishes/view/143}">
+                                <img th:src="@{/images/dishPics/crepes.jpeg}" alt="crepes"
+                                     style="width: 100px; height: 100px;"
+                                     class="img-thumbnail">
+                            </a>
+                            <figcaption>Crepes</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-sm-4">
+                        <figure>
+                            <a th:href="@{/dishes/view/161}">
+                                <img th:src="@{/images/dishPics/pork-beets.jpg}" alt="ramsay-wellington"
+                                     style="width: 100px; height: 100px;"
+                                     class="img-thumbnail">
+                            </a>
+                            <figcaption>Pork Tenderloin with Golden Beets</figcaption>
+                        </figure>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <figure>
-                        <a th:href="@{/dishes/view/113}">
-                            <img th:src="@{/images/dishPics/ramsay-wellington2.jpg}" alt="ramsay-wellington"
-                                 style="width: 100px; height: 100px;"
-                                 class="img-thumbnail">
-                        </a>
-                        <figcaption>Beef Wellington</figcaption>
-                    </figure>
-                </div>
-                <div class="col-sm-4">
-                    <figure>
-                        <a th:href="@{/dishes/view/152}">
-                            <img th:src="@{/images/dishPics/salmon-chowder.jpg}" alt="chowder"
-                                 style="width: 100px; height: 100px;"
-                                 class="img-thumbnail">
-                        </a>
-                        <figcaption>Salmon Chowder</figcaption>
-                    </figure>
-                </div>
-                <div class="col-sm-4">
-                    <figure>
-                        <a th:href="@{/dishes/view/122}">
-                            <img th:src="@{/images/dishPics/Chicken-Marsala.jpg}" alt="marsala"
-                                 style="width: 100px; height: 100px;"
-                                 class="img-thumbnail">
-                        </a>
-                        <figcaption>Chicken Marsala</figcaption>
-                    </figure>
-                </div>
-                <div class="col-sm-4">
-                    <figure>
-                        <a th:href="@{/dishes/view/127}">
-                            <img th:src="@{/images/dishPics/aglio.jpg}" alt="ramsay-wellington"
-                                 style="width: 100px; height: 100px;"
-                                 class="img-thumbnail">
-                        </a>
-                        <figcaption>Pasta Aglio e Olio</figcaption>
-                    </figure>
-                </div>
-                <div class="col-sm-4">
-                    <figure>
-                        <a th:href="@{/dishes/view/143}">
-                            <img th:src="@{/images/dishPics/crepes.jpeg}" alt="crepes"
-                                 style="width: 100px; height: 100px;"
-                                 class="img-thumbnail">
-                        </a>
-                        <figcaption>Crepes</figcaption>
-                    </figure>
-                </div>
-                <div class="col-sm-4">
-                    <figure>
-                        <a th:href="@{/dishes/view/161}">
-                            <img th:src="@{/images/dishPics/pork-beets.jpg}" alt="ramsay-wellington"
-                                 style="width: 100px; height: 100px;"
-                                 class="img-thumbnail">
-                        </a>
-                        <figcaption>Pork Tenderloin with Golden Beets</figcaption>
-                    </figure>
-                </div>
-            </div>
+
         </div>
-        <div class="container" style="margin-top:30px; display: inline-block;">
-            <div class="jumbotron text-center" style="margin-bottom:0" id="root">
-                <h2>NYT Food</h2>
-                <div class="banner-section" id="img-container">
-                </div>
-            </div>
-        </div>
-        <div class="container" style="margin-top:30px">
+
+        <hr>
+
+        <div class="container" style="margin-top:10px;">
             <div class="jumbotron text-center" style="margin-bottom:0">
                 <h2>Video of the Day</h2>
                 <iframe width="700" height="394" src="https://www.youtube.com/embed/UMp-IF6uPkk?list=PLTzMGnJjrsSy6H8uiX3XKWtUhhj2Vilw1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -181,10 +193,3 @@
         <div th:replace="fragments :: bootStrapScript"></div>
     </body>
 </html>
-<script>
-
-                // WARNING: fetch is not supported in IE, so it may need a polyfill
-
-
-
-                </script>

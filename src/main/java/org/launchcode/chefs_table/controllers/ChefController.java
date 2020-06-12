@@ -27,6 +27,7 @@ public class ChefController {
         HttpSession session = request.getSession();
         User user = authenticationController.getUserFromSession(session);
 
+        model.addAttribute("currentUserObj", user);
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("currentUser", user.getFirstName());
         model.addAttribute("isLoggedIn", (user != null));

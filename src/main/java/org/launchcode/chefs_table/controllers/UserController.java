@@ -34,6 +34,7 @@ public class UserController {
         HttpSession session = request.getSession();
         User user = authenticationController.getUserFromSession(session);
 
+        model.addAttribute("currentUserObj", user);
         model.addAttribute("currentUser", user.getFirstName());
         model.addAttribute("isLoggedIn", (user != null));
         model.addAttribute("title", "Users");
@@ -41,19 +42,6 @@ public class UserController {
         return "users/index";
     }
 
-    @GetMapping("profile")
-    public String displayCurrentUserProfile(Model model, HttpServletRequest request,
-                                     HttpServletResponse response,
-                                     Object handler) {
-
-        HttpSession session = request.getSession();
-        User user = authenticationController.getUserFromSession(session);
-
-
-
-        model.addAttribute("user", user);
-        return "/users/profile";
-    }
 
     @GetMapping("view/{userId}")
     public String displaySelectedUserProfile(HttpServletRequest request, Model model, @PathVariable int userId) {
@@ -62,6 +50,7 @@ public class UserController {
             HttpSession session = request.getSession();
             User user = authenticationController.getUserFromSession(session);
 
+            model.addAttribute("currentUserObj", user);
             model.addAttribute("currentUser", user.getFirstName());
             model.addAttribute("isLoggedIn", (user != null));
 

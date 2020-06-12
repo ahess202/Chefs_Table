@@ -29,6 +29,7 @@ public class IngredientController {
         HttpSession session = request.getSession();
         User user = authenticationController.getUserFromSession(session);
 
+        model.addAttribute("currentUserObj", user);
         model.addAttribute("currentUser", user.getFirstName());
         model.addAttribute("isLoggedIn", (user != null));
         model.addAttribute("title", "Ingredients");
@@ -41,6 +42,7 @@ public class IngredientController {
         HttpSession session = request.getSession();
         User user = authenticationController.getUserFromSession(session);
 
+        model.addAttribute("currentUserObj", user);
         model.addAttribute("currentUser", user.getFirstName());
         model.addAttribute("isLoggedIn", (user != null));
         model.addAttribute(new Ingredient());
@@ -67,6 +69,7 @@ public class IngredientController {
             HttpSession session = request.getSession();
             User user = authenticationController.getUserFromSession(session);
 
+            model.addAttribute("currentUserObj", user);
             model.addAttribute("currentUser", user.getFirstName());
             model.addAttribute("isLoggedIn", (user != null));
             Ingredient ingredient = (Ingredient) optIngredient.get();

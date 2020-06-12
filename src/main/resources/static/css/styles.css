@@ -1,3 +1,15 @@
+#body1 {
+    background: url(images/basil-chopping-board-fresh-green-616484.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    /* padding: 0; */
+    padding: 20px;
+    font-family: sans-serif;
+}
+
 .title {
     padding: 30px;
     text-decoration: underline;
@@ -23,11 +35,7 @@ td {
     text-align: center;
 }
 
-body {
-  padding: 20px;
-  font-family: sans-serif;
-  background: #f2f2f2;
-}
+
 
 #registerButton {
     text-align: right;
@@ -36,7 +44,9 @@ body {
 #timeType {
     display: inline-block;
 }
-
+.card {
+    background-color: lightblue;
+}
 #dishPic {
     width: 200px;
     height: 200px;
@@ -51,7 +61,11 @@ body {
 }
 
 .banner-img {
-    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: solid black 2px;
 }
 
 #navBarGreeting {
@@ -60,6 +74,9 @@ body {
     list-style: none;
 }
 
+.nytTitle {
+    font-size: 20px;
+}
 
 #dishDetails {
     border: solid black 3px;
@@ -72,7 +89,7 @@ body {
     text-align: center;
 }
 
-.ingredientList {
+.ingredientList{
     border: solid black 3px;
     float: left;
     width: 30%;
@@ -83,6 +100,14 @@ body {
     overflow-y:scroll;
     overflow-x:scroll;
     position:relative;
+}
+
+#root {
+    margin-bottom: 100px;
+    float: right;
+    width: 350px;
+    height: 500px;
+    display: inline-block;
 }
 
 .dishDirections {

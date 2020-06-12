@@ -23,6 +23,7 @@ public class HomeController {
         HttpSession session = request.getSession();
         User user = authenticationController.getUserFromSession(session);
 
+        model.addAttribute("currentUserObj", user);
         model.addAttribute("currentUser", user.getFirstName());
         model.addAttribute("isLoggedIn", (user != null));
         model.addAttribute("title", "Welcome to the Chef's Table!");

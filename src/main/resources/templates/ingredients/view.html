@@ -10,12 +10,9 @@
 <!--    <p th:text="${'Description: ' + ingredient.description}"></p>-->
         <p> Dishes found in:
             <ul>
-                <th:block th:each="dish : ${ingredient.dishes}">
-                    <li >
-                        <a th:href="@{'/dishes/view/' + ${dish.id}}"
-                           th:text="${dish.name + ' by ' + dish.user.firstName + ' ' + dish.user.lastName}"></a>
-                    </li>
-                </th:block>
+                <li th:each="dish : ${ingredient.dishes}">
+                    <a th:href="@{'/dishes/view/' + ${dish.id}}" th:text="${dish.name}"></a>
+                </li>
             </ul>
         </p>
 </div>
