@@ -50,6 +50,10 @@ body {
     padding: 10px;
 }
 
+.banner-img {
+    width: 100px;
+}
+
 #navBarGreeting {
     color: white;
     padding: 10px;

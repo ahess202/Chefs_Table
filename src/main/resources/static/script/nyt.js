@@ -2,13 +2,11 @@ window.addEventListener('load', (event) => {
 
 const app = document.getElementById('root')
 
-const logo = document.createElement('img')
-logo.src = 'logo.png'
 
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
 
-app.appendChild(logo)
+
 app.appendChild(container)
 
 var request = new XMLHttpRequest()
@@ -21,16 +19,34 @@ request.onload = function() {
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
 
-      const h1 = document.createElement('h1')
+      var h1 = document.createElement('h1')
       h1.textContent = article.title
 
       const p = document.createElement('p')
       article.byline = article.byline.substring(0, 300)
       p.textContent = `${article.byline}...`
+      var img = new Image();
+      img.src = article.multimedia[0].url;
+      img.setAttribute("class", "banner-img");
+      img.setAttribute("alt", "effy");
+      document.getElementById("img-container").appendChild(img);
+
+      var p2 = document.createElement('p')
+      p2.textContent = `${article.abstract}...`
+
+      var a1 = document.createElement('a')
+      a1.href = article.url;
+      a1.text = 'Link to article';
+      a1.setAttribute("target", "blank");
+
+
 
       container.appendChild(card)
       card.appendChild(h1)
       card.appendChild(p)
+      card.appendChild(img)
+      card.appendChild(p2)
+      card.appendChild(a1)
     })
   } else {
     const errorMessage = document.createElement('marquee')
