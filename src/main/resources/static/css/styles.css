@@ -76,6 +76,8 @@ td {
 
 .nytTitle {
     font-size: 20px;
+    font-style: bold;
+    text-decoration: underline;
 }
 
 #dishDetails {
